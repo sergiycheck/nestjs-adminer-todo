@@ -1,6 +1,6 @@
-import { FindAllDto } from './dto/findAll.dto';
-import { CustomParseObjectIdPipe } from './../pipes/custom-parse-objectid.pipe';
-import { NotEmptyPipe } from './../pipes/not-empty.pipe';
+import { FindAllDto } from '../todos/dto/findAll.dto.js';
+import { CustomParseObjectIdPipe } from './../pipes/custom-parse-objectid.pipe.js';
+import { NotEmptyPipe } from './../pipes/not-empty.pipe.js';
 import {
   Controller,
   Get,
@@ -12,9 +12,9 @@ import {
   Query,
   BadRequestException,
 } from '@nestjs/common';
-import { TodosService } from './todos.service';
-import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
+import { TodosService } from './todos.service.js';
+import { CreateTodoDto } from './dto/create-todo.dto.js';
+import { UpdateTodoDto } from './dto/update-todo.dto.js';
 import { ApiTags } from '@nestjs/swagger';
 import { validate } from 'class-validator';
 

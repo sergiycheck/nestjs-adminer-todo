@@ -1,4 +1,4 @@
-import { Todo } from '../entities/todo.entity';
+import { Todo } from '../entities/todo.entity.js';
 
 export type ResponseTodo = Omit<Todo, '_id'> & {
   id: string;

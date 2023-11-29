@@ -1,11 +1,11 @@
-import { TodosMapService } from './todos-map.service';
+import { TodosMapService } from './todos-map.service.js';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { LeanDocument, Model } from 'mongoose';
-import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
-import { Todo, TodoDocument } from './entities/todo.entity';
-import { FindAllDto } from './dto/findAll.dto';
+import { Document, Model } from 'mongoose';
+import { CreateTodoDto } from './dto/create-todo.dto.js';
+import { UpdateTodoDto } from './dto/update-todo.dto.js';
+import { Todo, TodoDocument } from './entities/todo.entity.js';
+import { FindAllDto } from './dto/findAll.dto.js';
 
 @Injectable()
 export class TodosService {
@@ -19,7 +19,7 @@ export class TodosService {
       ...createTodoDto,
     });
     const newTodo = await todo.save();
-    const obj = newTodo.toObject() as LeanDocument<Todo>;
+    const obj = newTodo.toObject() as Document<Todo>;
     return this.todosMapService.mapResponse(obj);
   }
 
@@ -30,7 +30,7 @@ export class TodosService {
   }
 
   async findOne(id: string) {
-    const todo = (await this.model.findById(id).lean()) as LeanDocument<Todo>;
+    const todo = (await this.model.findById(id).lean()) as Document<Todo>;
     return this.todosMapService.mapResponse(todo);
   }
 

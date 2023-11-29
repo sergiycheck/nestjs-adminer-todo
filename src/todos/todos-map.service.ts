@@ -1,11 +1,11 @@
-import { Todo } from './entities/todo.entity';
+import { Todo } from './entities/todo.entity.js';
 import { Injectable } from '@nestjs/common';
-import { LeanDocument } from 'mongoose';
-import { ResponseTodo } from './dto/responses.dto';
+import { Document } from 'mongoose';
+import { ResponseTodo } from './dto/responses.dto.js';
 
 @Injectable()
 export class TodosMapService {
-  public mapResponse(todo: LeanDocument<Todo>): ResponseTodo {
+  public mapResponse(todo: Document<Todo>): ResponseTodo {
     const { _id, ...data } = todo;
 
     return {

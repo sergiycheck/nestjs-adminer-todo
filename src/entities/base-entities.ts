@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import { Expose } from 'class-transformer';
 
 export class BaseEntity {

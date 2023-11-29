@@ -1,12 +1,12 @@
-import { TodosModule } from './../todos/todos.module';
+import { TodosModule } from './../todos/todos.module.js';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './app.controller.js';
+import { AppService } from './app.service.js';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import Joi from 'joi';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_FILTER } from '@nestjs/core';
-import { AllExceptionsFilter } from '../filters/all-exceptions.filter';
+import { AllExceptionsFilter } from '../filters/all-exceptions.filter.js';
 
 @Module({
   imports: [
