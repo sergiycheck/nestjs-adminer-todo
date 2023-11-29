@@ -4,13 +4,14 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Document, Model } from 'mongoose';
 import { CreateTodoDto } from './dto/create-todo.dto.js';
 import { UpdateTodoDto } from './dto/update-todo.dto.js';
-import { Todo, TodoDocument } from './entities/todo.entity.js';
+import { TodoDocument, Todo } from './entities/todo.entity.js';
 import { FindAllDto } from './dto/findAll.dto.js';
+import { RemoveResponse } from './dto/responses.dto.js';
 
 @Injectable()
 export class TodosService {
   constructor(
-    @InjectModel(Todo.name) public model: Model<TodoDocument>,
+    @InjectModel('Todo') public model: Model<TodoDocument>,
     private readonly todosMapService: TodosMapService,
   ) {}
 
@@ -50,7 +51,7 @@ export class TodosService {
     return this.todosMapService.mapResponse(updateTodo);
   }
 
-  async remove(id: string): Promise<{ affected: number }> {
+  async remove(id: string): Promise<RemoveResponse> {
     return this.model.deleteOne({ _id: id }) as any;
   }
 }

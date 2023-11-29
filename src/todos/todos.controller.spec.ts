@@ -1,17 +1,17 @@
-import { UpdateTodoDto } from './dto/update-todo.dto';
-import { RemoveResponse, ResponseTodo } from './dto/responses.dto';
-import { TodosMapService } from './todos-map.service';
+import { UpdateTodoDto } from './dto/update-todo.dto.js';
+import { RemoveResponse, ResponseTodo } from './dto/responses.dto.js';
+import { TodosMapService } from './todos-map.service.js';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TodosController } from './todos.controller';
-import { TodosService } from './todos.service';
+import { TodosController } from './todos.controller.js';
+import { TodosService } from './todos.service.js';
 import { getModelToken } from '@nestjs/mongoose';
-import { Todo, TodoDocument } from './entities/todo.entity';
+import { TodoDocument } from './entities/todo.entity.js';
 import { Model } from 'mongoose';
 import {
   createTodoJsonFirst,
   createTodoJsonSecond,
   removeResponse,
-} from './todos.controller.test-data';
+} from './todos.controller.test-data.js';
 
 describe('TodosController', () => {
   let todosController: TodosController;
@@ -24,7 +24,7 @@ describe('TodosController', () => {
         TodosService,
         TodosMapService,
         {
-          provide: getModelToken(Todo.name),
+          provide: getModelToken('Todo'),
           useValue: Model<TodoDocument>,
         },
       ],

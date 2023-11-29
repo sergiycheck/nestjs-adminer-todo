@@ -9,7 +9,7 @@ import { TodosMapService } from './todos-map.service.js';
   imports: [
     MongooseModule.forFeatureAsync([
       {
-        name: Todo.name,
+        name: 'Todo',
         useFactory: () => {
           const schema = TodoSchema;
           return schema;
