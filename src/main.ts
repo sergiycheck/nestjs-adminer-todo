@@ -9,6 +9,7 @@ import * as AdminJSMongoose from '@adminjs/mongoose';
 import AdminJS from 'adminjs';
 import mongoose from 'mongoose';
 import { honeycombTracing } from './tracing/honeycomb.tracing.js';
+import { GlobalTracerInterceptor } from './interceptors/global-tracing-interceptror.js';
 
 AdminJS.registerAdapter({
   Resource: AdminJSMongoose.Resource,
@@ -32,6 +33,8 @@ async function bootstrap() {
       transformOptions: { enableImplicitConversion: true, exposeDefaultValues: true },
     }),
   );
+
+  app.useGlobalInterceptors(new GlobalTracerInterceptor());
 
   const configService = app.get(ConfigService);
   const PORT = +configService.get('PORT');

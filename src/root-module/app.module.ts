@@ -42,7 +42,6 @@ import { AllExceptionsFilter } from '../filters/all-exceptions.filter.js';
 
         const uri = `mongodb://${dbUsername}:${dbPassword}@${dbHost}:${dbPort}/${dbName}?authMechanism=${dbAuthMechanism}&authSource=${dbAuthSource}`;
 
-        console.log(uri);
         return { uri };
       },
       inject: [ConfigService],
