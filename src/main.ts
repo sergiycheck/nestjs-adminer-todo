@@ -5,10 +5,10 @@ import { AppModule } from './root-module/app.module.js';
 import { ConfigService } from '@nestjs/config';
 
 import AdminJSExpress from '@adminjs/express';
-import { TodoModel } from './todos/entities/todo.entity.js';
 import * as AdminJSMongoose from '@adminjs/mongoose';
 import AdminJS from 'adminjs';
 import mongoose from 'mongoose';
+import { honeycombTracing } from './tracing/honeycomb.tracing.js';
 
 AdminJS.registerAdapter({
   Resource: AdminJSMongoose.Resource,
@@ -16,6 +16,8 @@ AdminJS.registerAdapter({
 });
 
 async function bootstrap() {
+  honeycombTracing();
+
   const app = await NestFactory.create(AppModule);
 
   const adminJs = await configureAdminJs(app);

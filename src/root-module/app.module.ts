@@ -23,6 +23,10 @@ import { AllExceptionsFilter } from '../filters/all-exceptions.filter.js';
         MONGODB_NAME: Joi.string().required(),
         MONGODB_AUTH_MECHANISM: Joi.string().required(),
         MONGODB_AUTH_SOURCE: Joi.string().required(),
+
+        //
+        OTEL_SERVICE_NAME: Joi.string().required(),
+        HONEYCOMB_API_KEY: Joi.string().required(),
       }),
     }),
     MongooseModule.forRootAsync({
